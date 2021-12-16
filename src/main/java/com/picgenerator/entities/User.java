@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "tag")
+@Table(name = "user")
 public class User implements Serializable {
 
     @Id

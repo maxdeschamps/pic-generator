@@ -21,7 +21,11 @@ public class Image implements Serializable {
     @Column(name="src")
     private String src;
 
-    @ManyToMany(mappedBy = "images")
+    @ManyToMany
+    @JoinTable(name = "images_tags",
+            joinColumns = @JoinColumn(name = "image_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
     @JsonIgnore
     private List<Tag> tags;
 
