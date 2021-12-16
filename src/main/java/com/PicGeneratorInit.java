@@ -10,16 +10,16 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @Configuration
-@EntityScan("com.tpspring.entities")
-@EnableJpaRepositories("com.tpspring.repositories")
-public class TDSpringInit extends SpringBootServletInitializer {
+@EntityScan("com.picgenerator.entities")
+@EnableJpaRepositories("com.picgenerator.repositories")
+public class PicGeneratorInit extends SpringBootServletInitializer {
     public static void main(String[] args) {
-        SpringApplication.run(TDSpringInit.class, args);
+        SpringApplication.run(PicGeneratorInit.class, args);
     }
 
     @Override
     protected SpringApplicationBuilder
     configure(SpringApplicationBuilder builder) {
-        return builder.sources(TDSpringInit.class);
+        return builder.sources(PicGeneratorInit.class);
     }
 }

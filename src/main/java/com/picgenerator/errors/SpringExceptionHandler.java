@@ -1,4 +1,4 @@
-package com.tpspring.errors;
+package com.picgenerator.errors;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
