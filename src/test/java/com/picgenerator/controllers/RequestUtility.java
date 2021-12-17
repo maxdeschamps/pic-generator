@@ -15,7 +15,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class RequestUtility {
 
-    public void imageEndpoint(String endpoint) throws IOException {
+    public void getImageEndpoint(String endpoint) throws IOException {
         String imageMineType = "image";
 
         HttpUriRequest request = new HttpGet("http://localhost/" + endpoint);
@@ -33,7 +33,7 @@ public class RequestUtility {
     }
 
 
-    public void jsonEndpoint(String endpoint) throws IOException {
+    public void getJsonEndpoint(String endpoint) throws IOException {
         String imageMineType = "application/json";
 
         HttpUriRequest request = new HttpGet("http://localhost/" + endpoint);
