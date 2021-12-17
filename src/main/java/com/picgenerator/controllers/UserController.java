@@ -17,13 +17,13 @@ public class UserController {
 
     @Operation(summary = "Récupération d'un user à partir de son identifiant")
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public User getProjet(@RequestParam(value = "id") Integer id) {
+    public User getUser(@RequestParam(value = "id") Integer id) {
         return userService.getById(id);
     }
 
     @Operation(summary = "Création ou mise à jour d'un user")
     @RequestMapping(path = "/user", method = RequestMethod.PUT)
-    public User addOrUpdateProjet(@Valid @RequestBody User user) {
+    public User addOrUpdateUser(@Valid @RequestBody User user) {
         return userService.createOrUpdate(user);
     }
 
@@ -35,7 +35,7 @@ public class UserController {
 
     @Operation(summary = "Suppression d'un user à partir de son identifiant")
     @RequestMapping(path = "/user", method = RequestMethod.DELETE)
-    public void deleteProjet(@RequestParam(value = "id") Integer id) {
+    public void deleteUser(@RequestParam(value = "id") Integer id) {
         userService.deleteById(id);
     }
 

@@ -17,13 +17,13 @@ public class TagController {
 
     @Operation(summary = "Récupération d'un tag à partir de son identifiant")
     @RequestMapping(path = "/tag", method = RequestMethod.GET)
-    public Tag getProjet(@RequestParam(value = "id") Integer id) {
+    public Tag getTag(@RequestParam(value = "id") Integer id) {
         return tagService.getById(id);
     }
 
     @Operation(summary = "Création ou mise à jour d'un tag")
     @RequestMapping(path = "/tag", method = RequestMethod.PUT)
-    public Tag addOrUpdateProjet(@Valid @RequestBody Tag tag) {
+    public Tag addOrUpdateTag(@Valid @RequestBody Tag tag) {
         return tagService.createOrUpdate(tag);
     }
 
@@ -35,7 +35,7 @@ public class TagController {
 
     @Operation(summary = "Suppression d'un tag à partir de son identifiant")
     @RequestMapping(path = "/tag", method = RequestMethod.DELETE)
-    public void deleteProjet(@RequestParam(value = "id") Integer id) {
+    public void deleteTag(@RequestParam(value = "id") Integer id) {
         tagService.deleteById(id);
     }
 

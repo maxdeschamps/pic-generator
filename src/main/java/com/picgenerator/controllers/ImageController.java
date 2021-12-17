@@ -17,25 +17,25 @@ public class ImageController {
 
     @Operation(summary = "Récupération d'une image à partir de son identifiant")
     @RequestMapping(path = "/image", method = RequestMethod.GET)
-    public Image getProjet(@RequestParam(value = "id") Integer id) {
+    public Image getImage(@RequestParam(value = "id") Integer id) {
         return imageService.getById(id);
     }
 
     @Operation(summary = "Création ou mise à jour d'une image")
     @RequestMapping(path = "/image", method = RequestMethod.PUT)
-    public Image addOrUpdateProjet(@Valid @RequestBody Image image) {
+    public Image addOrUpdateImage(@Valid @RequestBody Image image) {
         return imageService.createOrUpdate(image);
     }
 
     @Operation(summary = "Récupération de toutes les images")
     @RequestMapping(path = "/images/all", method = RequestMethod.GET)
-    public List<Image> getTags() {
+    public List<Image> getAllImage() {
         return imageService.getAll();
     }
 
     @Operation(summary = "Suppression d'une image à partir de son identifiant")
     @RequestMapping(path = "/image", method = RequestMethod.DELETE)
-    public void deleteProjet(@RequestParam(value = "id") Integer id) {
+    public void deleteImage(@RequestParam(value = "id") Integer id) {
         imageService.deleteById(id);
     }
 
