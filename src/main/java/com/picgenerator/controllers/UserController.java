@@ -1,8 +1,8 @@
 package com.picgenerator.controllers;
 
+import com.picgenerator.entities.User;
 import com.picgenerator.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
