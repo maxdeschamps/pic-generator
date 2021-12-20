@@ -4,6 +4,7 @@ import com.picgenerator.entities.Image;
 import com.picgenerator.repositories.ImageRepository;
 import org.im4java.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -21,10 +22,10 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Value("${imageMagick.path}")
+    private String imageMagickPath;
+
     public BufferedImage imageProcessing(BufferedImage image) throws IOException, InterruptedException, IM4JavaException {
-
-        String imPath="C:\\Program Files\\ImageMagick";
-
         IMOperation op = new IMOperation();
         op.addImage();
         op.colorize(30, 40, 0);
@@ -32,7 +33,7 @@ public class ImageService {
 
         // set up command
         ConvertCmd convert = new ConvertCmd();
-        convert.setSearchPath(imPath);
+        convert.setSearchPath(imageMagickPath);
         Stream2BufferedImage s2b = new Stream2BufferedImage();
         convert.setOutputConsumer(s2b);
 
