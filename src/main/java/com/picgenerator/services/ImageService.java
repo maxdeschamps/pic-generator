@@ -1,5 +1,6 @@
 package com.picgenerator.services;
 
+import com.picgenerator.entities.Image;
 import com.picgenerator.repositories.ImageRepository;
 import org.im4java.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
+
+import java.util.List;
 
 @Service
 public class ImageService {
@@ -38,5 +41,21 @@ public class ImageService {
         BufferedImage convertImage = s2b.getImage();
 
         return convertImage;
+    }
+
+    public Image getById(Integer id) {
+        return imageRepository.findById(id).orElse(null);
+    }
+
+    public Image createOrUpdate(Image image) {
+        return imageRepository.save(image);
+    }
+
+    public List<Image> getAll() {
+        return imageRepository.findAll();
+    }
+
+    public void deleteById(Integer id) {
+        imageRepository.delete(getById(id));
     }
 }
