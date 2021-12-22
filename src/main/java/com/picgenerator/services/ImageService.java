@@ -2,6 +2,7 @@ package com.picgenerator.services;
 
 import com.picgenerator.entities.Image;
 import com.picgenerator.repositories.ImageRepository;
+import com.picgenerator.repositories.TagRepository;
 import org.im4java.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +15,9 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ImageService {
@@ -22,8 +25,19 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Autowired
+    private TagRepository tagRepository;
+
     @Value("${imageMagick.path}")
     private String imageMagickPath;
+
+    public String getImageWithParams(Integer tag) {
+        List<Image> images = imageRepository.findByTag(tag);
+
+        Random rand = new Random();
+        Image image = images.get(rand.nextInt(images.size()));
+        return image.getSrc();
+    }
 
     public BufferedImage imageProcessing(BufferedImage image) throws IOException, InterruptedException, IM4JavaException {
         IMOperation op = new IMOperation();

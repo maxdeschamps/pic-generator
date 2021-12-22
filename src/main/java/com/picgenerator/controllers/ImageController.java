@@ -36,9 +36,18 @@ public class ImageController {
     @Autowired
     ImageService imageService;
 
-    @GetMapping("/test")
-    public ResponseEntity<Resource> Index() throws IOException, InterruptedException, IM4JavaException {
-        BufferedImage image = ImageIO.read(this.getClass().getResourceAsStream("/assets/img/noel_1.jpg"));
+    @GetMapping("/generate")
+    public ResponseEntity<Resource> Index(
+            @RequestParam(value = "w", required = false) Integer width,
+            @RequestParam(value = "h", required = false) Integer height,
+            @RequestParam(value = "t", required = false) Integer tag
+    ) throws IOException, InterruptedException, IM4JavaException {
+
+        // Choice of the image
+        String imageName = imageService.getImageWithParams(tag);
+
+
+        BufferedImage image = ImageIO.read(this.getClass().getResourceAsStream("/assets/img/"+imageName));
         image = imageService.imageProcessing(image);
 
         ByteArrayOutputStream os = new ByteArrayOutputStream();
