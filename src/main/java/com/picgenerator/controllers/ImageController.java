@@ -2,6 +2,7 @@ package com.picgenerator.controllers;
 
 import com.picgenerator.services.ImageService;
 import org.im4java.core.IM4JavaException;
+import org.im4java.core.IMOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.InputStreamResource;
@@ -26,7 +27,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ImageController {
@@ -36,10 +39,35 @@ public class ImageController {
     @Autowired
     ImageService imageService;
 
-    @GetMapping("/test")
-    public ResponseEntity<Resource> Index() throws IOException, InterruptedException, IM4JavaException {
-        BufferedImage image = ImageIO.read(this.getClass().getResourceAsStream("/assets/img/noel_1.jpg"));
-        image = imageService.imageProcessing(image);
+    @GetMapping("/generate")
+    public ResponseEntity<Resource> Index(
+            @RequestParam(value = "w", required = false) Integer width,
+            @RequestParam(value = "h", required = false) Integer height,
+            @RequestParam(value = "opt", required = false) Integer option,
+            @RequestParam(value = "r", required = false) Integer red,
+            @RequestParam(value = "g", required = false) Integer green,
+            @RequestParam(value = "b", required = false) Integer blue,
+            @RequestParam(value = "t", required = false) Integer tag
+    ) throws IOException, InterruptedException, IM4JavaException {
+
+        // Choice of the image
+        String imageName = imageService.getImageWithParams(tag);
+
+        // Get Buffered Image
+        BufferedImage image = ImageIO.read(this.getClass().getResourceAsStream("/assets/img/"+imageName));
+
+        // Define operations
+        IMOperation op = new IMOperation();
+        op.addImage();
+        // Resize or crop image
+        op = imageService.opResizeOrCrop(op, width, height, option);
+        // Colorize image
+        op = imageService.opColorize(op, red, green, blue);
+        // Define image on jpg
+        op.addImage("jpg:-");
+
+        // Proecessing image
+        image = imageService.imageProcessing(image, op);
 
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         ImageIO.write(image, "jpg", os);
