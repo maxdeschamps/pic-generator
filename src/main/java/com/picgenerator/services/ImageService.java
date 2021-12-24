@@ -39,19 +39,46 @@ public class ImageService {
         return image.getSrc();
     }
 
-    public BufferedImage imageProcessing(BufferedImage image) throws IOException, InterruptedException, IM4JavaException {
-        IMOperation op = new IMOperation();
-        op.addImage();
-        op.colorize(30, 40, 0);
-        op.addImage("jpg:-");
+    public IMOperation opResizeOrCrop(IMOperation op, Integer width, Integer height, Integer option) {
+        if (width != null && height != null) {
+            if (option != null && option == 2) {
+                // Resize image
+                op.resize(width, height);
+            } else {
+                // Crop image
+                op.crop(width, height, 0, 0);
+            }
+        }
+        return op;
+    }
 
-        // set up command
+    public IMOperation opColorize(IMOperation op, Integer red, Integer green, Integer blue) {
+        if (red != null || green != null || blue != null) {
+            if (red == null) {
+                red = 0;
+            }
+
+            if (green == null) {
+                green = 0;
+            }
+
+            if (blue == null) {
+                blue = 0;
+            }
+            op.colorize(red, green, blue);
+        }
+        return op;
+    }
+
+    public BufferedImage imageProcessing(BufferedImage image, IMOperation op) throws IOException, InterruptedException, IM4JavaException {
+
+        // Set up command
         ConvertCmd convert = new ConvertCmd();
         convert.setSearchPath(imageMagickPath);
         Stream2BufferedImage s2b = new Stream2BufferedImage();
         convert.setOutputConsumer(s2b);
 
-        // run command and extract BufferedImage from OutputConsumer
+        // Run command and extract BufferedImage from OutputConsumer
         convert.run(op,image);
         BufferedImage convertImage = s2b.getImage();
 
