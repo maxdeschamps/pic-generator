@@ -47,7 +47,10 @@ public class ImageController {
             @RequestParam(value = "r", required = false) Integer red,
             @RequestParam(value = "g", required = false) Integer green,
             @RequestParam(value = "b", required = false) Integer blue,
-            @RequestParam(value = "t", required = false) Integer tag
+            @RequestParam(value = "t", required = false) Integer tag,
+            @RequestParam(value = "text", required = false) String text,
+            @RequestParam(value = "t-size", required = false) Integer textSize,
+            @RequestParam(value = "t-color", required = false) String textColor
     ) throws IOException, InterruptedException, IM4JavaException {
 
         // Choice of the image
@@ -63,6 +66,8 @@ public class ImageController {
         op = imageService.opResizeOrCrop(op, width, height, option);
         // Colorize image
         op = imageService.opColorize(op, red, green, blue);
+        // Add text
+        op = imageService.opAddText(op, text, textSize, textColor);
         // Define image on jpg
         op.addImage("jpg:-");
 
@@ -77,7 +82,6 @@ public class ImageController {
                 .contentType(MediaType.parseMediaType("image/jpeg"))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "inline")
                 .body(new InputStreamResource(systemResourceAsStream));
-        //URL resourceUrl = this.getClass().getClassLoader().getResource("/assets/img/noel_1.jpg")
     }
 
     @Operation(summary = "Récupération d'une image à partir de son identifiant")
