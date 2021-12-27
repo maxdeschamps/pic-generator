@@ -46,6 +46,8 @@ public class ImageService {
                 op.resize(width, height);
             } else {
                 // Crop image
+                op.resize(width, height, "^");
+                op.gravity("center");
                 op.crop(width, height, 0, 0);
             }
         }
@@ -66,6 +68,23 @@ public class ImageService {
                 blue = 0;
             }
             op.colorize(red, green, blue);
+        }
+        return op;
+    }
+
+    public IMOperation opAddText(IMOperation op, String text, Integer textSize, String textColor) {
+        if (text != null && text != "") {
+            if (textSize != null) {
+                op.pointsize(textSize);
+            } else {
+                op.pointsize(20);
+            }
+            if (textColor != null) {
+                op.fill("#"+textColor);
+            } else {
+                op.fill("black");
+            }
+            op.annotate(0, 0, 0, 0, text);
         }
         return op;
     }
