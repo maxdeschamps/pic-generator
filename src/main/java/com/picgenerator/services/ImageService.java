@@ -32,11 +32,22 @@ public class ImageService {
     private String imageMagickPath;
 
     public String getImageWithParams(Integer tag) {
-        List<Image> images = imageRepository.findByTag(tag);
+        List<Image> images = null;
 
-        Random rand = new Random();
-        Image image = images.get(rand.nextInt(images.size()));
-        return image.getSrc();
+        if (tag != null) {
+            images = imageRepository.findByTag(tag);
+        } else {
+            images = imageRepository.findAll();
+        }
+
+        if (images != null) {
+            Random rand = new Random();
+            Image image = images.get(rand.nextInt(images.size()));
+            return image.getSrc();
+        } else {
+            // default img
+            return "ville_2.jpg";
+        }
     }
 
     public IMOperation opResizeOrCrop(IMOperation op, Integer width, Integer height, Integer option) {
