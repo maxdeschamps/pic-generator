@@ -1,10 +1,166 @@
 <html>
     <head>
         <title>Sample</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: "Roboto", sans-serif;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            h1 {
+                text-align: center;
+            }
+            .col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 600px;
+            }
+            .code {
+                background: #1c1c1c;
+                color: #d1d1d1;
+                letter-spacing: 2px;
+                padding: 20px;
+                margin-bottom: 5px;
+            }
+            .code .green {
+                color: #327334;
+            }
+        </style>
     </head>
     <body>
         <h1>Sample</h1>
-        <p>Test</p>
-        <img src="http://localhost:8080/test" alt="test">
+        <div class="container">
+            <div class="col">
+                <h2>Generate</h2>
+                <p class="description">Une image est généré aléatoirement, nous n'utilisons pas de paramètres</p>
+                <div class="code">
+                    http://localhost:8080/generate
+                </div>
+                <img src="http://localhost:8080/generate" alt="test 1" />
+            </div>
+            <div class="col">
+                <h2>Tag</h2>
+                <h3>Noel</h3>
+                <p class="description">L'image est généré avec le tag 1, nous utilisons le paramètre t</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1<br />
+                    <br />
+                    t = Interger <span class="green">// tag</span>
+                </div>
+                <img src="http://localhost:8080/generate?t=1" alt="test 2" />
+            </div>
+            <div class="col">
+                    <h3>Développement</h3>
+                <p class="description">L'image est généré avec le tag 2, nous utilisons le paramètre t</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=2<br />
+                    <br />
+                    t = Interger <span class="green">// tag</span>
+                </div>
+                <img src="http://localhost:8080/generate?t=2" alt="test 3" />
+            </div>
+            <div class="col">
+                <h2>Crop 500x500</h2>
+                <p class="description">L'image est recadrée en 500px par 500px, nous utilisons les paramètres w, h</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1&w=500&h=500<br />
+                    <br />
+                    w = Integer <span class="green">// width</span><br />
+                    h = Interger <span class="green">// height</span><br />
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=500" alt="test 4" />
+            </div>
+            <div class="col">
+                <h2>Resize 500</h2>
+                <p class="description">L'image est redimensionnée pour qu'un de ses côtés ne dépasse pas 500px, nous utilisons les paramètres w, h et opt</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1&w=500&h=500&opt=2<br />
+                    <br />
+                    w = Integer <span class="green">// width</span><br />
+                    h = Interger <span class="green">// height</span><br />
+                    opt = Interger (1 or 2) <span class="green">// 1 (default) = crop; 2 = resize</span>
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=500&opt=2" alt="test 5" />
+            </div>
+            <div class="col">
+                <h2>Colorize image</h2>
+                <h3>Jaune</h3>
+                <p class="description">L'image est colorée suivant les paramètres définis, nous utilisons les paramètres r, g et b</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1&w=500&h=600&r=50&g=50&b=0<br />
+                    <br />
+                    r = Integer (from 0 to 255) <span class="green">// red; default = 0</span><br />
+                    g = Interger (from 0 to 255) <span class="green">// green; default = 0</span><br />
+                    b = Interger (from 0 to 255) <span class="green">// blue; default = 0</span>
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=600&r=50&g=50&b=0" alt="test 6" />
+            </div>
+            <div class="col">
+                <h3>Bleu</h3>
+                <p class="description">L'image est colorée suivant les paramètres définis, nous utilisons le paramètre b</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1&w=500&h=600&b=200<br />
+                    <br />
+                    b = Interger (from 0 to 255) <span class="green">// blue; default = 0</span>
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=600&b=200" alt="test 7" />
+            </div>
+            <div class="col">
+                <h2>Text</h2>
+                <p class="description">Un texte est ajouté au milieu de l'image, nous utilisons le paramètre text</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1&w=500&h=600&text=Bonjour%20!<br />
+                    <br />
+                    text = String <span class="green">// text</span>
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=600&text=Bonjour%20!" alt="test 8" />
+            </div>
+            <div class="col">
+                <h2>Text size</h2>
+                <p class="description">Un texte est ajouté au milieu de l'image est à pour taille de police 40px, nous utilisons les paramètres text et t-size</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1&w=500&h=600&text=Bonjour%20!&t-size=40<br />
+                    <br />
+                    text = String <span class="green">// width</span><br />
+                    t-size = Interger <span class="green">// text size</span>
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=600&text=Bonjour%20!&t-size=40" alt="test 9" />
+            </div>
+            <div class="col">
+                <h2>Text color</h2>
+                <p class="description">Un texte violet est ajouté au milieu de l'image, nous utilisons les paramètres text et t-color</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=1&w=500&h=600&text=Violet&t-size=40&t-color=530b7d<br />
+                    <br />
+                    text = String <span class="green">// text</span><br />
+                    t-color = String <span class="green">// text color (hexadecimal without #)</span>
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=600&text=Violet&t-size=40&t-color=530b7d" alt="test 10" />
+            </div>
+            <div class="col">
+                <h2>Multiple params</h2>
+                <p class="description">Un texte violet de 40px est ajouté au milieu de l'image du tag 1 jaune recadrée 500x500, nous utilisons les paramètres t, w, h, r, g, text, text-size et t-color</p>
+                <div class="code">
+                    http://localhost:8080/generate?t=2&w=500&h=600&text=Violet&t-size=40&t-color=530b7d<br />
+                    <br />
+                    t = Integer <span class="green">// tag</span><br />
+                    w = Integer <span class="green">// width</span><br />
+                    h = Interger <span class="green">// height</span><br />
+                    r = Integer (from 0 to 255) <span class="green">// red; default = 0</span><br />
+                    g = Interger (from 0 to 255) <span class="green">// green; default = 0</span><br />
+                    text = String <span class="green">// text</span><br />
+                    t-size = Integer <span class="green">// text size</span><br />
+                    t-color = String <span class="green">// text color (hexadecimal without #)</span>
+                </div>
+                <img src="http://localhost:8080/generate?w=500&h=600&r=50&g=50&text=Violet&t-size=40&t-color=530b7d" alt="test 11" />
+            </div>
+        </div>
     </body>
 </html>
