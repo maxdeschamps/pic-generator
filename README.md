@@ -58,3 +58,7 @@ INSERT INTO `images_tags` (`image_id`, `tag_id`) VALUES
 
 ## 4 - Documentations
 Lorsque le projet est lancé, se diriger vers le lien suivant [http://localhost:8080/sample](http://localhost:8080/sample). Celui ci recense tous les paramètres pouvant être utilisés.
+
+## 5 - Test
+Pour tester toutes les fonctionnalités, nous utilisons l'API Vision de Google Cloud.
+Pour cela, vous devez créer un compte et un projet puis enregistrer votre clé de compte [(voir la documentation officiel)](https://cloud.google.com/vision/docs/setup).
