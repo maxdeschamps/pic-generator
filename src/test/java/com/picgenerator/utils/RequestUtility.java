@@ -1,4 +1,4 @@
-package com.picgenerator;
+package com.picgenerator.utils;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -84,30 +84,30 @@
 <!--            <groupId>org.thymeleaf.extras</groupId>-->
 <!--            <artifactId>thymeleaf-extras-springsecurity5</artifactId>-->
 <!--        </dependency>-->
-        </dependency>
+        <dependency>
             <scope>test</scope>
             <version>4.4.14</version>
             <artifactId>httpcore</artifactId>
             <groupId>org.apache.httpcomponents</groupId>
-        <dependency>
         </dependency>
+        <dependency>
             <scope>test</scope>
             <version>4.5.13</version>
             <artifactId>httpclient</artifactId>
             <groupId>org.apache.httpcomponents</groupId>
-        <dependency>
         </dependency>
+        <dependency>
             <scope>test</scope>
             <version>${junit.version}</version>
             <artifactId>junit-jupiter-engine</artifactId>
             <groupId>org.junit.jupiter</groupId>
-        <dependency>
         </dependency>
+        <dependency>
             <scope>test</scope>
             <version>${junit.version}</version>
             <artifactId>junit-jupiter-api</artifactId>
             <groupId>org.junit.jupiter</groupId>
-        <dependency>
+        </dependency>
     </dependencies>
 
     <build>
