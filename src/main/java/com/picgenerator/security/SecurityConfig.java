@@ -27,8 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/user/updatePassword").permitAll()
-            .antMatchers("/api", "/swagger-ui/**", "/api/**").hasRole("ADMIN")
+            .antMatchers("/sample", "/generate/**").permitAll()
+            .antMatchers("/api", "/swagger-ui/**", "/api/**", "/user/updatePassword").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and().httpBasic()
             .and().csrf().disable();
