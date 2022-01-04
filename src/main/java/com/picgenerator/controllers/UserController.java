@@ -39,4 +39,12 @@ public class UserController {
         userService.deleteById(username);
     }
 
+    @Operation(summary = "Mise à jour du mot de passe d'un utilisateur")
+    @RequestMapping(path = "/user/updatePassword", method = RequestMethod.POST)
+    public void setPassword(@RequestParam(value = "username") String username,
+                            @RequestParam(value = "old") String oldPassword,
+                            @RequestParam(value = "new") String newPassword) throws
+            IllegalAccessException {
+        userService.setPassword(username, oldPassword, newPassword);
+    }
 }
