@@ -1,5 +1,7 @@
 package com.picgenerator.controllers;
 
+import com.google.cloud.vision.v1.AnnotateImageResponse;
+import com.picgenerator.utils.GoogleCloudImageRecognition;
 import com.picgenerator.utils.ImageUtility;
 import com.picgenerator.utils.RequestUtility;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -68,6 +71,17 @@ class ImageControllerTest {
             } else {
                 assertThat(false, equalTo(true));
             }
+        }
+
+        @Test
+        @DisplayName("Text pas fiable à 100%")
+        void generateText() throws IOException {
+            String text = "generator";
+            String endpoint = "generate?t=1&w=500&h=600&text=" + text + "&t-size=40";
+            requestUtility.getImageEndpoint(endpoint);
+            BufferedImage img = imageUtility.getImageFromResponse(endpoint);
+            List<AnnotateImageResponse> responses = GoogleCloudImageRecognition.detectText(img);
+            assertThat(true, equalTo(GoogleCloudImageRecognition.TestIsInList(text, responses)));
         }
 
     }

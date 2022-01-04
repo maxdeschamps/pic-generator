@@ -20,6 +20,18 @@
         <junit.version>5.7.1</junit.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.cloud</groupId>
+                <artifactId>libraries-bom</artifactId>
+                <version>24.1.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <dependencies>
         <dependency>
@@ -107,6 +119,10 @@
             <version>${junit.version}</version>
             <artifactId>junit-jupiter-api</artifactId>
             <groupId>org.junit.jupiter</groupId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-vision</artifactId>
         </dependency>
     </dependencies>
 
