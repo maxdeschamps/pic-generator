@@ -3,17 +3,19 @@ package com.picgenerator.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Integer id;
+    @Column(name = "username")
+    @NotNull
+    @NotEmpty
+    private String username;
 
     @Column(name="firstname")
     private String firstname;
@@ -28,11 +30,15 @@ public class User implements Serializable {
     private String password;
 
     @Column(name="role")
-    private Role role;
+    private String role;
 
     @OneToMany(mappedBy = "author")
     @JsonIgnore
     private List<Image> images;
+
+    public String getUsername() {
+        return username;
+    }
 
     public String getEmail() {
         return email;
@@ -46,7 +52,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 

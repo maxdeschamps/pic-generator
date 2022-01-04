@@ -24,12 +24,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User getById(Integer id) {
-        return userRepository.findById(id).orElse(null);
-    }
-
-    private User getByEmail(String email) {
-        return userRepository.findByEmail(email).orElse(null);
+    public User getById(String username) {
+        return userRepository.findById(username).orElse(null);
     }
 
     public User createOrUpdate(User user) {
@@ -43,23 +39,23 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public void deleteById(Integer id) {
-        userRepository.delete(getById(id));
+    public void deleteById(String username) {
+        userRepository.delete(getById(username));
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = this.getByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = this.getById(username);
         if (user != null) {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
         }
-        throw new UsernameNotFoundException("User '" + email + "' not found or inactive");
+        throw new UsernameNotFoundException("User '" + username + "' not found or inactive");
     }
 
-    public void setPassword(Integer id, String oldPassword, String newPassword) throws IllegalAccessException {
-        User user = this.getById(id);
+    public void setPassword(String username, String oldPassword, String newPassword) throws IllegalAccessException {
+        User user = this.getById(username);
         if (user != null) {
             String encodedOldPassword = passwordEncoder.encode(oldPassword);
             String encodedNewPassword = passwordEncoder.encode(newPassword);
