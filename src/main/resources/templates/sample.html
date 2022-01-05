@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Sample</title>
+        <title>Pic Generator</title>
         <style>
             body {
                 margin: 0;
@@ -39,7 +39,7 @@
         <div class="container">
             <div class="col">
                 <h2>Generate</h2>
-                <p class="description">Une image est généré aléatoirement, nous n'utilisons pas de paramètres</p>
+                <p class="description">Une image est générée aléatoirement, nous n'utilisons pas de paramètres</p>
                 <div class="code">
                     http://localhost:8080/generate
                 </div>
@@ -48,7 +48,7 @@
             <div class="col">
                 <h2>Tag</h2>
                 <h3>Noel</h3>
-                <p class="description">L'image est généré avec le tag 1, nous utilisons le paramètre t</p>
+                <p class="description">L'image est générée avec le tag 1, nous utilisons le paramètre <b>t</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1<br />
                     <br />
@@ -58,7 +58,7 @@
             </div>
             <div class="col">
                     <h3>Développement</h3>
-                <p class="description">L'image est généré avec le tag 2, nous utilisons le paramètre t</p>
+                <p class="description">L'image est générée avec le tag 2, nous utilisons le paramètre <b>t</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=2<br />
                     <br />
@@ -68,7 +68,7 @@
             </div>
             <div class="col">
                 <h2>Crop 500x500</h2>
-                <p class="description">L'image est recadrée en 500px par 500px, nous utilisons les paramètres w, h</p>
+                <p class="description">L'image est recadrée en 500px par 500px, nous utilisons les paramètres <b>w</b>, <b>h</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1&w=500&h=500<br />
                     <br />
@@ -79,7 +79,7 @@
             </div>
             <div class="col">
                 <h2>Resize 500</h2>
-                <p class="description">L'image est redimensionnée pour qu'un de ses côtés ne dépasse pas 500px, nous utilisons les paramètres w, h et opt</p>
+                <p class="description">L'image est redimensionnée pour qu'un de ses côtés ne dépasse pas 500px, nous utilisons les paramètres <b>w</b>, <b>h</b> et <b>opt</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1&w=500&h=500&opt=2<br />
                     <br />
@@ -92,7 +92,7 @@
             <div class="col">
                 <h2>Colorize image</h2>
                 <h3>Jaune</h3>
-                <p class="description">L'image est colorée suivant les paramètres définis, nous utilisons les paramètres r, g et b</p>
+                <p class="description">L'image est colorée suivant les paramètres définis, nous utilisons les paramètres <b>r</b>, <b>g</b> et <b>b</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1&w=500&h=600&r=50&g=50&b=0<br />
                     <br />
@@ -104,7 +104,7 @@
             </div>
             <div class="col">
                 <h3>Bleu</h3>
-                <p class="description">L'image est colorée suivant les paramètres définis, nous utilisons le paramètre b</p>
+                <p class="description">L'image est colorée suivant les paramètres définis, nous utilisons le paramètre <b>b</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1&w=500&h=600&b=200<br />
                     <br />
@@ -114,7 +114,7 @@
             </div>
             <div class="col">
                 <h2>Text</h2>
-                <p class="description">Un texte est ajouté au milieu de l'image, nous utilisons le paramètre text</p>
+                <p class="description">Un texte est ajouté au milieu de l'image, nous utilisons le paramètre <b>text</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1&w=500&h=600&text=Bonjour%20!<br />
                     <br />
@@ -124,7 +124,7 @@
             </div>
             <div class="col">
                 <h2>Text size</h2>
-                <p class="description">Un texte est ajouté au milieu de l'image est à pour taille de police 40px, nous utilisons les paramètres text et t-size</p>
+                <p class="description">Un texte est ajouté au milieu de l'image est à pour taille de police 40px, nous utilisons les paramètres <b>text</b> et <b>t-size</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1&w=500&h=600&text=Bonjour%20!&t-size=40<br />
                     <br />
@@ -135,7 +135,7 @@
             </div>
             <div class="col">
                 <h2>Text color</h2>
-                <p class="description">Un texte violet est ajouté au milieu de l'image, nous utilisons les paramètres text et t-color</p>
+                <p class="description">Un texte violet est ajouté au milieu de l'image, nous utilisons les paramètres <b>text</b> et <b>t-color</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=1&w=500&h=600&text=Violet&t-size=40&t-color=530b7d<br />
                     <br />
@@ -146,7 +146,7 @@
             </div>
             <div class="col">
                 <h2>Multiple params</h2>
-                <p class="description">Un texte violet de 40px est ajouté au milieu de l'image du tag 1 jaune recadrée 500x500, nous utilisons les paramètres t, w, h, r, g, text, text-size et t-color</p>
+                <p class="description">Un texte violet de 40px est ajouté au milieu de l'image du tag 1 jaune recadrée 500x500px, nous utilisons les paramètres <b>t</b>, <b>w</b>, <b>h</b>, <b>r</b>, <b>g</b>, <b>text</b>, <b>text-size</b> et <b>t-color</b></p>
                 <div class="code">
                     http://localhost:8080/generate?t=2&w=500&h=600&text=Violet&t-size=40&t-color=530b7d<br />
                     <br />
