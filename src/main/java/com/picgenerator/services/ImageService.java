@@ -6,16 +6,11 @@ import com.picgenerator.repositories.TagRepository;
 import org.im4java.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.URL;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -24,9 +19,6 @@ public class ImageService {
 
     @Autowired
     private ImageRepository imageRepository;
-
-    @Autowired
-    private TagRepository tagRepository;
 
     @Value("${imageMagick.path}")
     private String imageMagickPath;
@@ -84,7 +76,7 @@ public class ImageService {
     }
 
     public IMOperation opAddText(IMOperation op, String text, Integer textSize, String textColor) {
-        if (text != null && text != "") {
+        if (text != null && !text.equals("")) {
             if (textSize != null) {
                 op.pointsize(textSize);
             } else {
