@@ -26,18 +26,19 @@
 - Lancer une première fois le projet
 - Exécuter dans la base de données ces requêtes afin d'avoir un jeu de test complet
 ```
-INSERT INTO `user` (`id`, `email`, `firstname`, `lastname`, `password`, `role`) VALUES
-(1, 'test@test.com', 'Test', 'TEST', 'test12345', 1);
+INSERT INTO `user` (`username`, `email`, `firstname`, `lastname`, `password`, `role`) VALUES
+# mot de passe : test
+('test', 'test@test.com', 'Test', 'TEST', '$2a$11$U.7B0y975cQQj9NnzTN07.upV2NfQ3I0JC6X.cgf4RBRl8S3c0Tza', 'ADMIN');
 
-INSERT INTO `image` (`id`, `name`, `src`, `user_id`) VALUES
-(1, 'Développement 1', 'developpeur_1.jpg', 1),
-(2, 'Développement 2', 'developpeur_2.jpg', 1),
-(3, 'Noel 1', 'noel_1.jpg', 1),
-(4, 'Noel 2', 'noel_2.jpg', 1),
-(5, 'Paysage 1', 'paysage_1.jpg', 1),
-(6, 'Paysage 2', 'paysage_2.jpg', 1),
-(7, 'Ville 1', 'ville_1.jpg', 1),
-(8, 'Ville 2', 'ville_2.jpg', 1);
+INSERT INTO `image` (`id`, `name`, `src`, `author`) VALUES
+(1, 'Développement 1', 'developpeur_1.jpg', 'test'),
+(2, 'Développement 2', 'developpeur_2.jpg', 'test'),
+(3, 'Noel 1', 'noel_1.jpg', 'test'),
+(4, 'Noel 2', 'noel_2.jpg', 'test'),
+(5, 'Paysage 1', 'paysage_1.jpg', 'test'),
+(6, 'Paysage 2', 'paysage_2.jpg', 'test'),
+(7, 'Ville 1', 'ville_1.jpg', 'test'),
+(8, 'Ville 2', 'ville_2.jpg', 'test');
 
 INSERT INTO `tag` (`id`, `name`) VALUES
 (1, 'noel'),

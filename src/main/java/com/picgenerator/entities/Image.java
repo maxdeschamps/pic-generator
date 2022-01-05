@@ -1,6 +1,7 @@
 package com.picgenerator.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "image")
 public class Image implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -30,7 +30,7 @@ public class Image implements Serializable {
     private List<Tag> tags;
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name="author", nullable=false)
     @JsonIgnore
     private User author;
 
