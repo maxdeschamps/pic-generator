@@ -46,7 +46,10 @@ INSERT INTO `tag` (`id`, `name`) VALUES
 (1, 'noel'),
 (2, 'developpement'),
 (3, 'ville'),
-(4, 'paysage');
+(4, 'paysage'),
+(5, 'cinema'),
+(6, 'nicolas cage'),
+(7, 'nick cage');
 
 INSERT INTO `images_tags` (`image_id`, `tag_id`) VALUES
 (1, 2),
@@ -56,7 +59,13 @@ INSERT INTO `images_tags` (`image_id`, `tag_id`) VALUES
 (5, 4),
 (6, 4),
 (7, 3),
-(8, 3);
+(8, 3),
+(9, 5),
+(9, 6),
+(9, 7),
+(10, 5),
+(10, 6),
+(10, 7);
 ```
 
 ## 4 - Documentations
