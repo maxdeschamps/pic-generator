@@ -24,9 +24,9 @@ class ImageControllerTest {
     ImageUtility imageUtility = new ImageUtility();
 
     @Test
-    @DisplayName("Get image by ID")
+    @DisplayName("Get image by ID without auth")
     void getImageById() throws IOException {
-        requestUtility.getJsonEndpoint("image?id=1");
+        requestUtility.getEndpointNonAuthenticated("image?id=1");
     }
 
     @Test
@@ -74,7 +74,7 @@ class ImageControllerTest {
         }
 
         @Test
-        @DisplayName("Text pas fiable à 100%")
+        @DisplayName("Text (pas fiable à 100%)")
         void generateText() throws IOException {
             String text = "generator";
             String endpoint = "generate?t=1&w=500&h=600&text=" + text + "&t-size=40";
@@ -88,8 +88,8 @@ class ImageControllerTest {
 
 
     @Test
-    @DisplayName("Get all images")
+    @DisplayName("Get all images without auth")
     void getAllImage() throws IOException {
-        requestUtility.getJsonEndpoint("images/all");
+        requestUtility.getEndpointNonAuthenticated("images/all");
     }
 }

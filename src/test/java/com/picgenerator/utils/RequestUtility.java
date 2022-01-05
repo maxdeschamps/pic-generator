@@ -67,4 +67,15 @@ public class RequestUtility {
 
         return response;
     }
+
+    public void getEndpointNonAuthenticated(String endpoint) throws IOException {
+        HttpUriRequest request = new HttpGet(baseUrl + endpoint);
+
+        HttpResponse response = HttpClientBuilder.create().build().execute(request);
+
+        // Assert that the endpoint is online
+        assertThat(
+                response.getStatusLine().getStatusCode(),
+                equalTo(HttpStatus.SC_UNAUTHORIZED));
+    }
 }
