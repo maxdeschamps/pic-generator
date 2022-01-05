@@ -38,7 +38,9 @@ INSERT INTO `image` (`id`, `name`, `src`, `author`) VALUES
 (5, 'Paysage 1', 'paysage_1.jpg', 'test'),
 (6, 'Paysage 2', 'paysage_2.jpg', 'test'),
 (7, 'Ville 1', 'ville_1.jpg', 'test'),
-(8, 'Ville 2', 'ville_2.jpg', 'test');
+(8, 'Ville 2', 'ville_2.jpg', 'test'),
+(9, 'Nicolas Cage 1', 'nicolas_cage_2.jpg', 'test'),
+(10, 'Nicolas Cage 2', 'nicolas_cage_2.jpg', 'test');
 
 INSERT INTO `tag` (`id`, `name`) VALUES
 (1, 'noel'),
